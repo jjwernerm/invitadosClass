@@ -1,0 +1,15 @@
+.gradient-color {
+  background: rgb(165, 180, 252);
+  background: -moz-radial-gradient(circle, rgba(165, 180, 252, 1) 60%, rgba(129, 140, 248, 1) 100%);
+  background: -webkit-radial-gradient(circle, rgba(165, 180, 252, 1) 60%, rgba(129, 140, 248, 1) 100%);
+  background: radial-gradient(circle, rgba(165, 180, 252, 1) 60%, rgba(129, 140, 248, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#a5b4fc", endColorstr="#818cf8", GradientType=1);
+  /* Indigo-300 => #a5b4fc */
+  /* stop 60 en gradient */
+  /* Indigo-400 => #818cf8 */
+  /* stop 100 en gradient */
+}
+
+.h-gradient {
+  height: 25vh;
+}

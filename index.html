@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/public/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon-16x16.png">
+  <link rel="manifest" href="/public/site.webmanifest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invitados con Class</title>
+</head>
+
+<body>
+  <div id="app">
+
+    <!-- MAIN SECTION -->
+    <div class="gradient-color h-gradient font-bold">
+      <div class="h-gradient flex justify-center items-center">
+
+        <form class="md:w-1/4" id="main-form">
+
+          <div class="text-center text-indigo-500">
+            <label for="input-amount">Cantidad de Invitados</label>
+          </div>
+
+          <div class="mt-1 mb-6">
+            <input id="input-amount" type="text" required
+              class="w-full text-center rounded-md py-1 shadow-md outline-none focus:ring-2 ring-indigo-500">
+          </div>
+
+          <div class="flex justify-center">
+            <button type="submit"
+              class="w-2/4 rounded-md bg-white px-3 py-2 text-indigo-500 shadow-md hover:bg-indigo-500 hover:text-white">Ingresar</button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+    <!-- FORM SECTION -->
+    <div class="flex justify-center text-sm md:text-lg">
+      <div class="bg-white w-4/5 my-4 rounded-xl shadow-md">
+
+        <form class="pb-4 border-2 rounded-md" id="section-form">
+
+          <div class="md:columns-2 m-4">
+
+            <div class="bg-indigo-100 text-indigo-500 rounded-md mb-1 p-4">
+              <p>Invitados: <span id="">0</span></p>
+            </div>
+
+            <div class="bg-red-100 text-red-500 rounded-md mt-1 p-4">
+              <p>Restante: <span id="">0</span></p>
+            </div>
+
+          </div>
+
+          <div class="md:columns-2">
+
+            <div class="text-center text-indigo-500">
+              <label for="input-nombre">Nombre del Invitado</label>
+            </div>
+
+            <div class="flex justify-center mt-1 mb-6">
+              <input id="input-nombre" type="text" required disabled
+                class="rounded-md py-1 outline-none focus:ring-2 ring-violet-500 border-2 border-violet-200">
+            </div>
+
+            <div class="text-center text-indigo-500">
+              <label for="input-numero">N° de invitados</label>
+            </div>
+
+            <div class="flex justify-center mt-1 mb-6">
+              <input id="input-numero" type="text" required disabled
+                class="rounded-md text-center py-1 outline-none focus:ring-2 ring-violet-500 border-2 border-violet-200">
+            </div>
+
+          </div>
+
+          <div class="flex justify-center">
+            <button type="submit"
+              class="rounded-md bg-indigo-500 px-3 py-2 font-semibold text-white shadow-md hover:bg-indigo-400 hover:text-white">Agregar</button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+    <!-- LIST SECTION -->
+    <div class="container mx-auto mb-8">
+
+      <p class="text-sm text-center text-indigo-500 p-2 md:text-xl">Lista de Invitados</p>
+      <hr>
+
+      <!-- aquí el listado de invitados desde js -->
+
+      <hr>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="text-center m-2 text-indigo-500">
+      <p>©Copyright 2024 joannywerner. Todos los derechos reservados</p>
+    </div>
+
+
+  </div>
+  <script type="module" src="./js/main.js"></script>
+  <script src="https://kit.fontawesome.com/bc0a7d8895.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
