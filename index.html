@@ -40,6 +40,15 @@
       </div>
     </div>
 
+    <!-- WARNING MESSAGE SECTION -->
+    <div class="flex justify-center text-sm md:text-lg">
+      <div class="w-4/5 mt-4 rounded-xl text-center">
+        <p class="p-2" id="warning-message">&nbsp;</p>
+      </div>
+    </div>
+
+
+
     <!-- FORM SECTION -->
     <div class="flex justify-center text-sm md:text-lg">
       <div class="bg-white w-4/5 my-4 rounded-xl shadow-md">
@@ -49,11 +58,11 @@
           <div class="md:columns-2 m-4">
 
             <div class="bg-indigo-100 text-indigo-500 rounded-md mb-1 p-4">
-              <p>Invitados: <span id="">0</span></p>
+              <p>Invitados: <span id="span-guests">0</span></p>
             </div>
 
             <div class="bg-red-100 text-red-500 rounded-md mt-1 p-4">
-              <p>Restante: <span id="">0</span></p>
+              <p>Restante: <span id="span-remaining">0</span></p>
             </div>
 
           </div>
@@ -61,20 +70,20 @@
           <div class="md:columns-2">
 
             <div class="text-center text-indigo-500">
-              <label for="input-nombre">Nombre del Invitado</label>
+              <label for="input-name">Nombre del Invitado</label>
             </div>
 
             <div class="flex justify-center mt-1 mb-6">
-              <input id="input-nombre" type="text" required disabled
+              <input id="input-name" type="text" required disabled
                 class="rounded-md py-1 outline-none focus:ring-2 ring-violet-500 border-2 border-violet-200">
             </div>
 
             <div class="text-center text-indigo-500">
-              <label for="input-numero">N° de invitados</label>
+              <label for="input-number">N° de invitados</label>
             </div>
 
             <div class="flex justify-center mt-1 mb-6">
-              <input id="input-numero" type="text" required disabled
+              <input id="input-number" type="text" required disabled
                 class="rounded-md text-center py-1 outline-none focus:ring-2 ring-violet-500 border-2 border-violet-200">
             </div>
 
