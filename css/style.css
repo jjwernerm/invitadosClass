@@ -13,3 +13,11 @@
 .h-gradient {
   height: 25vh;
 }
+
+.message-success {
+  @apply text-green-500 bg-green-100 rounded-md;
+}
+
+.message-alert {
+  @apply text-red-500 bg-red-100 rounded-md;
+}

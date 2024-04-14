@@ -2,8 +2,8 @@ export function setupApp() {
 
   // Variables
   const mainForm = document.querySelector('#main-form');
-  const inputAmount = document.querySelector('#input-amount');
-  const warningMessage = document.querySelector('#warning-message');
+  const inputLimit = document.querySelector('#input-limit');
+  const msgWarning = document.querySelector('#msg-warning');
   const sectionForm = document.querySelector('#section-form');
   const spanGuests = document.querySelector('#span-guests');
   const spanRemaining = document.querySelector('#span-remaining');
@@ -17,7 +17,7 @@ export function setupApp() {
   eventListeners();
   function eventListeners() {
 
-    mainForm.addEventListener('submit', enterGuests);
+    mainForm.addEventListener('submit', enterLimit);
     sectionForm.addEventListener('submit', addGuests);
 
 
@@ -26,11 +26,11 @@ export function setupApp() {
   //-----------------------------------------
 
   // Class
-  class Guests {
+  class Guest {
 
-    constructor(guests) {
-      this.guests = Number(guests);
-      this.remaining = Number(guests);
+    constructor(guest) {
+      this.guest = Number(guest);
+      this.remaining = Number(guest);
       this.total = [];
     };
   };
@@ -41,37 +41,53 @@ export function setupApp() {
     activateSectionForm(amount) {
 
       // Destructuring
-      const { guests, remaining } = amount;
+      const { guest, remaining } = amount;
 
-      spanGuests.textContent = guests;
+      spanGuests.textContent = guest;
       spanRemaining.textContent = remaining
-      inputAmount.setAttribute('disabled', true);    
+      inputLimit.setAttribute('disabled', true);
+      mainForm.querySelector('button[type="submit"]').className = '';
+      mainForm.querySelector('button[type="submit"]').innerHTML = '';
       inputName.removeAttribute('disabled');
       inputNumber.removeAttribute('disabled');
+      sectionForm.querySelector('button[type="submit"]').removeAttribute('disabled');
+
   
     };
 
     warningMessage(message, type) {
-      
+
       if(type === 'error') {
 
-        warningMessage.classList.add('bg-red-100', 'text-red-500', 'rounded-md');
+        msgWarning.classList.add('message-alert');
 
-      } else {
+      } else { 
+        
+        msgWarning.classList.add('message-success');
 
-        warningMessage.classList.add('bg-green-100', 'text-green-500', 'rounded-md');
-
-      };
+      };      
 
       // Mensaje de error en el HTML
-      warningMessage.textContent = message;
+      msgWarning.textContent = message;
 
-      // Quitar mensaje de error en el HTML
-      // setTimeout(() => {
-      //   warningMessage.innerHTML = '&nbsp;';
-      //   warningMessage.classList.remove('bg-red-100', 'bg-green-100');
-      //   warningMessage.remove();
-      // }, 3000);
+      // Quitar mensaje después de 3 segundos
+      setTimeout(() => {
+        
+        // Dejo un espacio en blanco para mantener el estilo de márgenes y relleno en en lugar de mensajes.
+        msgWarning.innerHTML = '&nbsp;';
+        inputName.value = '';
+        inputNumber.value = '';
+
+        if (type === 'error') {
+          
+          msgWarning.classList.remove('message-alert');
+
+        } else {
+
+          msgWarning.classList.remove('message-success');
+        };
+
+      }, 3000);
 
     };
 
@@ -85,18 +101,21 @@ export function setupApp() {
   //-----------------------------------------
 
   // Functions
-  function enterGuests(e) {
+  function enterLimit(e) {
     e.preventDefault();
 
-    const amount = Number(inputAmount.value);
+    const limit = Number(inputLimit.value);
 
     // Instances Guest: crear el objeto 'guest' a partir de la clase 'Guest'
-    guests = new Guests(amount);
+    guests = new Guest(limit);
 
-    if(amount <= 0 || isNaN(amount)) {
-      console.log('La Cantidad de Invitados es inválida');
+    if(limit <= 0 || isNaN(limit)) {
+      ui.warningMessage('El límite de Invitados es inválido', 'error');
+      return;
+
     } else {
       ui.activateSectionForm(guests);
+      return;
     };
 
   };
