@@ -19,23 +19,23 @@
     <div class="gradient-color h-gradient">
       <!-- <div class="h-gradient flex items-center"> -->
 
-        <form class="h-gradient w-full flex flex-col justify-center items-center" id="main-form">
+      <form class="h-gradient w-full flex flex-col justify-center items-center" id="main-form">
 
-          <div class="w-3/5 text-center font-bold text-indigo-500">
-            <label for="input-amount">Límite de Invitados en el Evento (máximo)</label>
-          </div>
+        <div class="w-3/5 text-center font-bold text-indigo-500">
+          <label for="input-amount">Límite de Invitados en el Evento (máximo)</label>
+        </div>
 
-          <div class="w-1/5 mt-1 mb-6 flex justify-center">
-            <input id="input-limit" type="text" required
-              class="text-center rounded-md py-1 shadow-md outline-none focus:ring-2 ring-indigo-500">
-          </div>
+        <div class="w-1/5 mt-1 mb-6 flex justify-center">
+          <input id="input-limit" type="text" required
+            class="text-center rounded-md py-1 shadow-md outline-none focus:ring-2 ring-indigo-500">
+        </div>
 
-          <div class="flex justify-center">
-            <button type="submit"
-              class="w-full rounded-md bg-white px-3 py-2 text-indigo-500 shadow-md hover:bg-indigo-500 hover:text-white">Ingresar</button>
-          </div>
+        <div class="flex justify-center">
+          <button type="submit"
+            class="w-full rounded-md bg-white px-3 py-2 text-indigo-500 shadow-md hover:bg-indigo-500 hover:text-white">Ingresar</button>
+        </div>
 
-        </form>
+      </form>
 
       <!-- </div> -->
     </div>
@@ -89,7 +89,8 @@
 
           <div class="flex justify-center">
             <button type="submit"
-              class="rounded-md bg-indigo-500 px-3 py-2 font-semibold text-white shadow-md hover:bg-indigo-400 hover:text-white" disabled>Agregar</button>
+              class="rounded-md bg-indigo-500 px-3 py-2 font-semibold text-white shadow-md hover:bg-indigo-400 hover:text-white"
+              disabled>Agregar</button>
           </div>
 
         </form>
@@ -98,12 +99,25 @@
     </div>
 
     <!-- LIST SECTION -->
-    <div class="container mx-auto mb-8">
+    <div class="container mx-auto">
 
       <p class="text-sm text-center text-indigo-500 p-2 md:text-xl">Lista de Invitados</p>
-      <hr>
 
-      <!-- aquí el listado de invitados desde js -->
+      <div class="flex justify-center mb-8 p-1">
+        <table class="border-separate border-spacing-0.5 w-screen">
+          <thead>
+            <tr>
+              <th class="border border-white bg-indigo-100 text-indigo-500 rounded-l-lg w-9/12">Nombre</th>
+              <th class="border border-white bg-indigo-100 text-indigo-500 rounded-r-lg w-3/12">N°</th>
+            </tr>
+          </thead>
+          <tbody id="tr-list">
+
+            <!-- aquí el listado de invitados desde js -->
+
+          </tbody>
+        </table>
+      </div>
 
       <hr>
     </div>

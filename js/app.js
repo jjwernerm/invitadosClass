@@ -9,6 +9,7 @@ export function setupApp() {
   const spanRemaining = document.querySelector('#span-remaining');
   const inputName = document.querySelector('#input-name');
   const inputNumber = document.querySelector('#input-number');
+  const trList = document.querySelector('#tr-list');
   let guests;
 
   //-----------------------------------------
@@ -31,8 +32,16 @@ export function setupApp() {
     constructor(guest) {
       this.guest = Number(guest);
       this.remaining = Number(guest);
-      this.total = [];
+      this.lists = [];
     };
+
+    newGuest(guestObject) {
+
+      this.lists = [...this.lists,  guestObject];
+      // this.calcularRestante();
+  
+    };
+
   };
 
   class UI {
@@ -75,8 +84,6 @@ export function setupApp() {
         
         // Dejo un espacio en blanco para mantener el estilo de márgenes y relleno en en lugar de mensajes.
         msgWarning.innerHTML = '&nbsp;';
-        inputName.value = '';
-        inputNumber.value = '';
 
         if (type === 'error') {
           
@@ -85,10 +92,54 @@ export function setupApp() {
         } else {
 
           msgWarning.classList.remove('message-success');
+          inputName.value = '';
+          inputNumber.value = '';
         };
 
       }, 3000);
 
+    };
+
+    listGuests(lists) {
+
+      this.cleanHTML(); // Limpia el HTML previo antes de agregar los nuevos elementos.
+
+      lists.forEach((list, index) => {
+
+        const { name, number, id } = list;
+
+        // Creamos el elemento <tbody>
+        const tr = document.createElement('tr');
+
+        // Alternamos entre las clases para filas pares e impares
+        if (index % 2 === 0) {
+          tr.classList.add('bg-slate-100', 'text-slate-500');
+        } else {
+        tr.classList.add('bg-white', 'text-slate-500');
+        };
+
+      tr.innerHTML = `
+      
+        <tr>
+          <td class="border border-white rounded-l-lg">${name}</td>
+          <td class="border border-white rounded-r-lg">${number}</td>
+        </tr>
+
+      `
+
+      // Agregar al HTML
+      trList.appendChild(tr);
+
+      });
+
+    };
+
+    cleanHTML() {
+
+      while(trList.firstChild) {
+        trList.removeChild(trList.firstChild);
+      };
+  
     };
 
   };
@@ -96,7 +147,7 @@ export function setupApp() {
   //-----------------------------------------
 
   // Instances UI  
-  const ui = new UI();  
+  const ui = new UI();
 
   //-----------------------------------------
 
@@ -143,7 +194,20 @@ export function setupApp() {
 
     };
 
-      ui.warningMessage(`Los invitados de ${name} se agregaron con éxito`);
+    // Generar un objeto con el invitado
+    // Utilizo object literal para crear un objeto a partir de variables individuales, también llamado sintaxis de asignación
+    const guestObject = { name, number, id: Date.now() };
+
+    //Añade un nuevo invitado
+    guests.newGuest(guestObject);
+
+    ui.warningMessage(`Los invitados de ${name} se agregaron con éxito`);
+
+    // Listar los invitados
+    const { lists } = guests; //Destructuring
+
+    ui.listGuests(lists);
+
 
 
   };
