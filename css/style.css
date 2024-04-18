@@ -21,3 +21,8 @@
 .message-alert {
   @apply text-red-500 bg-red-100 rounded-md;
 }
+
+#delete-btn:hover {
+  font-size: 1.1em;
+  color: red;
+}

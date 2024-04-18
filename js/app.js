@@ -42,6 +42,13 @@ export function setupApp() {
   
     };
 
+    deleteGuest(id) {
+
+      this.lists = this.lists.filter((list) => list.id !== id );
+      // this.calcularRestante();
+  
+    };
+
   };
 
   class UI {
@@ -110,6 +117,7 @@ export function setupApp() {
 
         // Creamos el elemento <tbody>
         const tr = document.createElement('tr');
+        tr.dataset.id = id;
 
         // Alternamos entre las clases para filas pares e impares
         if (index % 2 === 0) {
@@ -118,19 +126,29 @@ export function setupApp() {
         tr.classList.add('bg-white', 'text-slate-500');
         };
 
-      tr.innerHTML = `
-      
-        <tr>
-          <td class="border border-white rounded-l-lg">${name}</td>
-          <td class="border border-white rounded-r-lg">${number}</td>
-        </tr>
+        tr.innerHTML = `      
+          <tr>
+            <td class="border border-white rounded-l-lg">
+              <button id="delete-btn" class="fa-solid fa-trash-can"></button> 
+              ${name}
+            </td>
+            <td class="border border-white rounded-r-lg">${number}</td>
+          </tr>
+        `     
 
-      `
+        // Agregar al HTML
+        trList.appendChild(tr);
 
-      // Agregar al HTML
-      trList.appendChild(tr);
+        // Obtener el botón de eliminación dentro de la fila actual
+        const deleteBtn = tr.querySelector('#delete-btn');
 
-      });
+        deleteBtn.onclick = () => {
+
+          deleteGuest(id); // Llama a la función que elimina el invitado
+
+        };
+
+      });      
 
     };
 
@@ -208,8 +226,19 @@ export function setupApp() {
 
     ui.listGuests(lists);
 
+  };
 
+  function deleteGuest(id) {
 
+    // Elimina los gastos del objeto
+    guests.deleteGuest(id);
+  
+    // Elimina los gastos del HTML
+    const { lists, restante }  = guests;  
+    ui.listGuests(lists);
+    // ui.actualizarRestante(restante);
+    // ui.comprobarPresupuesto(presupuesto);
+  
   };
 
   //-----------------------------------------
