@@ -323,6 +323,12 @@ export function setupApp() {
       ui.warningMessage('El N° de Invitados es inválido', 'error');
       return;
 
+    } else if (number > guest.remaining) {
+
+      // Mando a llamar al método 'warningMessage' de la clase 'UI', pasándole como parámetro el mensaje del error
+      ui.warningMessage('El N° de Invitados supera el restante', 'error');
+      return;
+
     };
 
     // Generar un objeto con el invitado
